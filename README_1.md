@@ -107,6 +107,7 @@ Digite a sigla do estado (UF) para listar os parceiros cadastrados.
 * Salvar dados em arquivo (`.json` ou banco de dados)
 * Validação de entrada de dados
 * Interface gráfica (GUI)
+* pré-definir Estados (Siglas) em um tupla
 * Busca por cidade ou nome
 
 ---
