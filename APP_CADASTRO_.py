@@ -1,21 +1,27 @@
 banco_dados = []
 
-    
+ufs = {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS",
+       "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO",
+       "RR", "SC", "SP", "SE", "TO"}
+
+   
 def cadastro_parceiro(nome, end, tel, cid, uf):
     oficina = { #dict_cadastro 
         'Nome': nome,
         'Endereço': end,
         'Telefone': tel,
         'Cidade': cid,
-        'Estado': uf
-    }
-    banco_dados.append(oficina)#armazena o cadastro na lista
-    print(f'Oficina {nome} cadastrada com sucesso!')
-    #f' - me permite manipular a string e colocar ela em qualque lugar
-    
+        'Estado': uf.upper()
+    } 
+    if oficina["Estado"].upper() in ufs:
+           banco_dados.append(oficina)#armazena o cadastro na lista
+           print(f'Oficina {nome} cadastrada com sucesso!')
+                #f' - me permite manipular a string e colocar ela em qualque lugar
+    else:
+          print('Digite um estado Inválido')      
+                    
     return True
     
-tupla = (MA,CE)
 
 def buscar_parceiro(uf):
     result = []#armazena os estados
@@ -24,8 +30,12 @@ def buscar_parceiro(uf):
         if parceiro['Estado'].lower() == uf.lower():
             #.lower() transforma as strings em minusculas para facilitar a comparação
             result.append(parceiro)#adiciona parceiro a lista result
+         
+         
+    else:
+        print('Não temos oficinas credenciadas nesse Estado')
             
-    return result
+    return result            
                        
 print ('Programa de Cadastro Para Parceiros\n')
 while True:
@@ -38,6 +48,7 @@ while True:
         cid_1 = input("Cidade: ")
         uf_1 = input("Estado: ")
         cad = cadastro_parceiro(nome_1, end_1, tel_1, cid_1, uf_1)
+      
     elif op == 2:
         estado = input('Digite o UF: ') 
         res = buscar_parceiro(estado)#chamo 
@@ -52,4 +63,4 @@ while True:
             print(f'Cidade: {cid_1}')
             print(f'Estado: {uf_1}')
     elif op == 0:
-        break
+        brea
